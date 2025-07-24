@@ -102,11 +102,3 @@ st.subheader("🧪 Model Evaluation on Historical Data")
 st.markdown("**Classification Report:**")
 report_df = pd.DataFrame(report).transpose()
 st.dataframe(report_df.style.background_gradient(cmap='Blues'))
-
-# Confusion Matrix
-st.markdown("**Confusion Matrix:**")
-
-cm_df = pd.DataFrame(matrix,
-                     index= target_names,
-                     columns= target_names)
-st.dataframe(cm_df.style.background_gradient(cmap='Oranges'))
