@@ -107,6 +107,6 @@ st.dataframe(report_df.style.background_gradient(cmap='Blues'))
 st.markdown("**Confusion Matrix:**")
 
 cm_df = pd.DataFrame(matrix,
-                     index= present_label,
+                     index= target_names,
                      columns= target_names)
 st.dataframe(cm_df.style.background_gradient(cmap='Oranges'))
