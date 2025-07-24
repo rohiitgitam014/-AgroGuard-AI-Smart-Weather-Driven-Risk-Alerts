@@ -34,14 +34,13 @@ def get_weather_data(lat, lon):
 # --- Sample Historical Dataset with Labels ---
 def get_historical_data():
     data = {
-        "T2M": [30, 28, 21, 26, 33, 25],
-        "RH2M": [90, 82, 60, 88, 92, 70],
-        "WS2M": [1.5, 3.2, 2.8, 1.0, 0.5, 3.0],
-        "PRECTOTCORR": [5.0, 1.2, 0.0, 3.1, 6.7, 0.9],
-        "Risk_Level": ["High", "Moderate", "Low", "High", "High", "Moderate"]
+        "T2M": [38.5, 35.0, 29.5, 33.0, 41.2, 28.7],  # Temperature in Celsius
+        "RH2M": [35, 60, 85, 70, 25, 90],             # Relative Humidity in %
+        "WS2M": [3.0, 1.5, 0.8, 2.5, 4.2, 1.0],        # Wind Speed at 2m in m/s
+        "PRECTOTCORR": [0.0, 1.2, 12.5, 5.0, 0.0, 15.8],  # Precipitation in mm
+        "Risk_Level": ["Low", "Moderate", "High", "Moderate", "Low", "High"]
     }
     return pd.DataFrame(data)
-
 # --- Train the ML Model and Return Evaluation Metrics ---
 def train_model():
     df = get_historical_data()
