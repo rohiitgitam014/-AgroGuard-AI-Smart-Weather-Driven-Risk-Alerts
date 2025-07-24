@@ -50,7 +50,6 @@ def train_model():
     X = df[["T2M", "RH2M", "WS2M", "PRECTOTCORR"]]
     y = df["Risk_Label"]
 
-    # Split into training and test sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
 
     model = RandomForestClassifier(random_state=42)
@@ -58,10 +57,21 @@ def train_model():
 
     y_pred = model.predict(X_test)
 
-    report = classification_report(y_test, y_pred, target_names=label_encoder.classes_, output_dict=True)
-    matrix = confusion_matrix(y_test, y_pred)
+    # Dynamically extract only present labels
+    present_labels = sorted(set(y_test) | set(y_pred))
+    target_names = label_encoder.inverse_transform(present_labels)
+
+    report = classification_report(
+        y_test,
+        y_pred,
+        labels=present_labels,
+        target_names=target_names,
+        output_dict=True
+    )
+    matrix = confusion_matrix(y_test, y_pred, labels=present_labels)
 
     return model, label_encoder, report, matrix
+
 
 # --- User Input for Location ---
 st.sidebar.header("📍 Enter Location")
