@@ -68,6 +68,7 @@ def train_model():
         target_names=target_names,
         output_dict=True
     )
+    report = pd.DataFrame(report).transpose()
     matrix = confusion_matrix(y_test, y_pred, labels=present_labels)
 
     return model, label_encoder, report, matrix
