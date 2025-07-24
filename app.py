@@ -105,10 +105,8 @@ st.dataframe(report_df.style.background_gradient(cmap='Blues'))
 
 # Confusion Matrix
 st.markdown("**Confusion Matrix:**")
-present_labels = sorted(set(y_test) | set(model.predict(X_test)))
-present_classes = label_encoder.inverse_transform(present_labels)
 
 cm_df = pd.DataFrame(matrix,
-                     index=present_classes,
-                     columns=present_classes)
+                     index= present_label,
+                     columns= target_names)
 st.dataframe(cm_df.style.background_gradient(cmap='Oranges'))
