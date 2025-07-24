@@ -21,9 +21,9 @@ def get_weather_data(lat, lon):
     if response.status_code == 200:
         data = response.json()["properties"]["parameter"]
         weather = {
-            "T2M": list(data["T2M"].values())[0],
-            "RH2M": list(data["RH2M"].values())[0],
-            "WS2M": list(data["WS2M"].values())[0],
+            "T2M": list(data["T2M"].values())[0:],
+            "RH2M": list(data["RH2M"].values())[0:],
+            "WS2M": list(data["WS2M"].values())[0:],
             "PRECTOTCORR": list(data["PRECTOTCORR"].values())[0],
         }
         return pd.DataFrame([weather])
@@ -96,7 +96,7 @@ if st.sidebar.button("🚀 Fetch and Predict Risk Level"):
         st.success(f"🌡️ Based on current weather, the predicted risk level is: **{predicted_risk}**")
 
 # --- Evaluation Section ---
-st.subheader("🧪 Model Evaluation on Historical Data")
+st.subheader("🧪 Model Evaluation on Real time Data")
 
 # Classification Report
 st.markdown("**Classification Report:**")
