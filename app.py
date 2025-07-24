@@ -89,8 +89,8 @@ if st.sidebar.button("🚀 Fetch and Predict Risk Level"):
         st.subheader("📊 Real-time Weather Data")
         st.dataframe(weather_df)
 
-        prediction = model.predict(weather_df)[0:]
-        predicted_risk = label_encoder.inverse_transform([prediction])[0:]
+        prediction = model.predict(weather_df)
+        predicted_risk = label_encoder.inverse_transform([prediction])
 
         st.subheader("⚠️ Predicted Risk Level")
         st.success(f"🌡️ Based on current weather, the predicted risk level is: **{predicted_risk}**")
