@@ -13,7 +13,6 @@ st.markdown("Get real-time agricultural risk alerts based on live weather condit
 
 # --- Get Real-time Weather Data from NASA API ---
 def get_weather_data(lat, lon):
-    today = datetime.date.yesterday()
     url = f"https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M,RH2M,WS2M,PRECTOTCORR&community=AG&longitude={lon}&latitude={lat}&start={yesterday}&end={yesterday}&format=JSON"
 
     
